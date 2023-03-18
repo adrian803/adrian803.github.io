@@ -11,8 +11,13 @@ on:
 jobs:
   build-and-deploy:
     # 服务器环境：最新版 Ubuntu
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04 # 运行环境
     steps:
+      - name: Use Node.js 16
+        uses: actions/setup-node@v3 # 使用node环境
+        with:
+          node-version: 16 # 版本16
+
       # 拉取代码
       - name: Checkout
         uses: actions/checkout@v2
