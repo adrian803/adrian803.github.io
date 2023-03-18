@@ -2,6 +2,7 @@ module.exports = {
     base: '/blog/', // 这个路径名称就是你刚才所配置的项目名！！！，斜杠不能漏！！！
     title: '菜鸡林某の blog',
     description: '菜鸡林某の blog',
+      dest: '/dist/',
     themeConfig: {
         nav: [
             { text: '首页', link: '/' },
