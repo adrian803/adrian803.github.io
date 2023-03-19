@@ -1,18 +1,40 @@
-name: Build and Deploy
-on: [push]
+
+name: 部署文档
+
+on:
+  push:
+    paths-ignore:
+      - 'scripts/**'
+  pull_request:
+    paths-ignore:
+      - 'scripts/**'
+
 jobs:
-  build-and-deploy:
+  deploy-gh-pages:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@master
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          # submodules: true
 
-    - name: vuepress-deploy
-      uses: jenkey2011/vuepress-deploy@master
-      env:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        TARGET_REPO: MokaDevelopers/mokabot2
-        TARGET_BRANCH: gh-pages
-        BUILD_SCRIPT: yarn && yarn docs:build
-        BUILD_DIR: docs/.vuepress/dist
-        CNAME: docs-mokabot.arisa.moe
+      - name: 设置 Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: npm
+
+      - name: 安装依赖
+        run: npm install
+
+      - name: 构建文档
+        env:
+          NODE_OPTIONS: --max_old_space_size=4096
+        run: npm run docs:build
+
+      - name: 部署文档
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: docs/.vuepress/dist
