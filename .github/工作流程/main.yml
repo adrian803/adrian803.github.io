@@ -3,8 +3,7 @@ name: 部署文档
 
 on:
   push:
-    paths-ignore:
-      - 'scripts/**'
+    branches: [master]
   pull_request:
     paths-ignore:
       - 'scripts/**'
