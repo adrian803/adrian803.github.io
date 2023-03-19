@@ -7,8 +7,10 @@ on:
   pull_request:
     paths-ignore:
       - 'scripts/**'
+      
 permissions:
   contents: write
+  
 jobs:
   deploy-gh-pages:
     runs-on: ubuntu-latest
