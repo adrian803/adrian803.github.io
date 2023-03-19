@@ -1,9 +1,8 @@
 ---
 home: true
-heroImage: /hero.jpg
-heroText: Hero
-tagline: Hero 副标题
-actionText: 快速上手 →
+heroText: 林息の个人博客
+tagline: 一个基于 VuePress 的个人博客
+actionText: 如何搭建 →
 actionLink: /handbook/1/
 features:
 - title: 简洁至上
@@ -13,4 +12,5 @@ features:
 - title: 高性能
   details: VuePress 为每个页面预渲染生成静态的 HTML，同时在页面被加载的时候，将作为 SPA 运行。
 footer: MIT Licensed | Copyright © 2018-present Evan You
+
 ---
